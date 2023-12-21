@@ -1,0 +1,22 @@
+def is_power(a,b):
+  if a > 1 and b > 1 and a % b == 0 and a > b:
+    is_power(a/b,b)
+    return True 
+  elif a <=1 or b <= 1:
+    print("This function works if both values above 1")
+    return False
+  else:
+    return False 
+    
+ChatGPT
+
+def is_power(a, b):
+    # Base case: if a equals b or a equals 1
+    if a == b or a == 1:
+        return True
+    # Additional base case to handle division by zero or negative powers
+    elif b == 0 or a == 0 or a < b:
+        return False
+    # Recursive case: a must be divisible by b and a/b must be a power of b
+    else:
+        return a % b == 0 and is_power(a // b, b)
