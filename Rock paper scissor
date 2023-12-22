@@ -1,0 +1,21 @@
+import random
+
+def play():
+  total_rounds = int(input('how many rounds do you want to play: '))
+  rounds = 0
+  while rounds < total_rounds:
+    rounds += 1
+    user = input("input your choice: 'r' for rock, 'p' for paper and 's' for scissors: ").lower()
+    comp = random.choice(['r','p','s'])
+    combination = [user,comp]
+    winning_combinations = [['r','s'],['p','r'],['s','p']]
+    losing_combinations = [['s','r'],['r','p'],['p','s']]
+    draw_combinations = [['p','p'],['r','r'],['s','s']]
+    if combination in winning_combinations:
+      print('user wins')
+    elif combination in losing_combinations:
+      print('user loses')
+    elif combination in draw_combinations:
+      print("it's a draw")
+    
+play()
