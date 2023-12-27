@@ -1,0 +1,45 @@
+
+list_1 = [3,7,22,55,4,6,16,14,5]
+search_list = sorted(list_1)
+search_term = 6
+
+def left_of_middle(x):
+  if len(x) % 2 == 0:
+    left_of_middle = x[0:(len(x)//2)]
+    return left_of_middle
+  else:
+    left_of_middle = x[0:(len(x)-1)//2]
+    return left_of_middle
+  
+def right_of_middle(x):
+  if len(x) % 2 == 0:
+    right_of_middle = x[(len(x)//2):len(x)]
+    return right_of_middle
+  else:
+    right_of_middle = x[((len(x)-1)//2)+1:len(x)]
+    return right_of_middle
+
+def middle(x):
+  if len(x) % 2 == 0:
+    middle = x[len(x)//2]
+    return middle
+  else:
+    middle = x[len(x)//2]
+    return middle
+
+
+def binary_search(search_list, search_term):
+  if len(search_list) == 0:
+    return False
+  
+  mid = middle(search_list)
+  
+  if mid == search_term:
+    return True
+  elif mid > search_term:
+    return binary_search(left_of_middle(search_list),search_term)
+  elif mid < search_term:
+    return binary_search(right_of_middle(search_list),search_term)
+
+
+print(binary_search(search_list,search_term))
